@@ -1,13 +1,9 @@
 # 🛡️ Offensive Security Notes
 
 
-<p align="center">
-  <big><b>Offense is the best defense.</b></big>
-</p>
-
 
 <p align="center">
-  <b>Offense is the best defense.</b>
+ <font color=red> <b>Offense is the best defense.</b></font>
 </p>
 
 
