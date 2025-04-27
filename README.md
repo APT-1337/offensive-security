@@ -3,7 +3,7 @@
 
 
 <p align="center">
- <b>Offense is the best defense.</b>
+  <b><span style="font-size: 24px;">Offense is the best defense.</span></b>
 </p>
 
 
