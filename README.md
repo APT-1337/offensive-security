@@ -1,7 +1,19 @@
 # 🛡️ Offensive Security Notes
+
+```
+   ____   ______ _____ ______ _____ _____ _______ _____ __     __
+  / __ \ |  ____/ ____|  ____/ ____|  __ \__   __|_   _|\ \   / /
+ | |  | || |__ | (___ | |__ | |    | |__) | | |    | |   \ \_/ / 
+ | |  | ||  __| \___ \|  __|| |    |  _  /  | |    | |    \   /  
+ | |__| || |____ ____) | |___| |____| | \ \  | |   _| |_    | |   
+  \____/ |______|_____/|______\_____|_|  \_\ |_|  |_____|   |_|   
+                                                                 
+```
+
 <p align="center">
-  <img src="https://your-image-url.com/banner.png" alt="Offensive Security Banner" />
+  <b>Offense is the best defense.</b>
 </p>
+
 
 
 Welcome to my Offensive Security notes repository.  
