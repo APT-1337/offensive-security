@@ -1,6 +1,6 @@
 # Cybersecurity / Google Hacking
 
-## 0-Introduction.md
+## 0-Introduction
 
 # 📚 Google Hacking Introduction
 
@@ -22,7 +22,7 @@ Google Dorking (also called Google Hacking) is the art of using advanced search 
     
 ---
 
-## 1-Basic Dorks.md
+## 1-Basic Dorks
 
 # 🔧 Basic Google Hacking Dorks
 
@@ -55,7 +55,7 @@ Common Google Dorks used to find exposed files or pages:
 
 ---
 
-## 2-Sensitive Information Dorks.md
+## 2-Sensitive Information Dorks
 
 # 🔐 Sensitive Information Search Dorks
 
@@ -78,7 +78,7 @@ Queries used to find sensitive documents and credentials:
 
 ---
 
-## 3-Vulnerable Sites Dorks.md
+## 3-Vulnerable Sites Dorks
 
 # 🛡️ Vulnerable Website Dorks
 
@@ -103,7 +103,7 @@ Identifying websites running vulnerable or outdated platforms:
 
 ---
 
-## 4-Other Useful Dorks.md
+## 4-Other Useful Dorks
 
 # 📂 Other Useful Google Hacking Dorks
 
@@ -220,7 +220,7 @@ Various searches that uncover administrative panels, server info, and backups:
 
 ---
 
-## 5-Advanced Dorks.md
+## 5-Advanced Dorks
 
 # 🔥 Advanced Google Hacking Dorks
 
