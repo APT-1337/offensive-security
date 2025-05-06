@@ -12,6 +12,9 @@ Cryptographic failures are vulnerabilities that arise when cryptography is imple
   ```bash
   nmap -p 443 --script=ssl-enum-ciphers <TARGET_HOSTNAME>
   ```
+  - **What it does**: 
+  - Categorizes ciphers with grades ranging from A (strong) to F (weak).
+  - Identifies the strength of encryption protocols and cipher suites.
 ---
 
 ## 2. **Testing with testssl.sh** 🛠️
