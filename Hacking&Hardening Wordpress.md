@@ -94,3 +94,73 @@ wpscan --url http://target.com --enumerate u,ap --api-token YOUR_TOKEN
 ---
 
 Happy Enumerating! 🎯
+
+# WordPress Hardening
+
+## 🧠 What is Hardening?
+
+Hardening is the process of securing a WordPress installation against known threats by reducing its attack surface and applying security best practices.
+
+---
+
+## 🔄 Regular Updates
+
+Always keep the following components updated:
+- WordPress Core
+- Installed Plugins
+- Installed Themes
+
+**Enable automatic updates** in `wp-config.php`:
+```php
+define( 'WP_AUTO_UPDATE_CORE', true );
+add_filter( 'auto_update_plugin', '__return_true' );
+add_filter( 'auto_update_theme', '__return_true' );
+
+🔌 Plugin and Theme Management
+Only install themes and plugins from trusted sources (e.g., wordpress.org)
+
+Check reviews, number of installs, and last update date
+
+Remove any unused plugins or themes
+
+🔐 Recommended Security Plugins
+🔹 Sucuri Security
+Activity auditing
+
+Malware scanning
+
+File integrity checks
+
+🔹 iThemes Security
+Two-Factor Authentication (2FA)
+
+User action logging
+
+reCAPTCHA integration
+
+🔹 Wordfence Security
+Web Application Firewall (WAF)
+
+Malware scanner
+
+IP blacklisting (premium)
+
+👤 User Management
+Avoid using the default "admin" username
+
+Enforce strong passwords
+
+Enable Two-Factor Authentication (2FA)
+
+Follow the principle of least privilege
+
+Regularly audit user roles and remove unused accounts
+
+⚙️ Configuration Enhancements
+Disable user enumeration
+
+Limit login attempts
+
+Rename or protect wp-login.php and wp-admin with IP restrictions
+
+
