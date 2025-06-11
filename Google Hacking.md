@@ -26,6 +26,9 @@ Google Dorking (also called Google Hacking) is the art of using advanced search 
 
 # 🔧 Basic Google Hacking Dorks
 
+> Sub Domain enumeration
+> -`site:*.example.com -site:www.example.com`
+
 Common Google Dorks used to find exposed files or pages:
 
 - `intitle:"Index of /" "config.php" wordpress demo`
